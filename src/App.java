@@ -37,22 +37,33 @@ public class App {
     }
 
 
-    public static void main(String[] args) {
-        int tam = 20;
-        Integer[] vetor = gerarVetorObjetos(tam);
+   public static void main(String[] args) {
+    // Teste com um tamanho médio para observar as métricas (ex: 12.500)
+    int tam = 12500; 
+    Integer[] vetorOriginal = gerarVetorObjetos(tam);
 
-        BubbleSort<Integer> bolha = new BubbleSort<>();
+    // Lista de ordenadores para facilitar o loop de teste
+    IOrdenador<Integer>[] ordenadores = new IOrdenador[] {
+        new BubbleSort<Integer>(),
+        new InsertionSort<Integer>(),
+        new SelectionSort<Integer>()
+    };
 
-        Integer[] vetorOrdenadoBolha = bolha.ordenar(vetor);
+    String[] nomes = {"BubbleSort", "InsertionSort", "SelectionSort"};
 
-        System.out.println("\nVetor ordenado método Bolha:");
-        System.out.println("Comparações: " + bolha.getComparacoes());
-        System.out.println("Movimentações: " + bolha.getMovimentacoes());
-        System.out.println("Tempo de ordenação (ms): " + bolha.getTempoOrdenacao());
+    System.out.println("Comparação de Desempenho (Tamanho: " + tam + ")");
+    System.out.println("-------------------------------------------------");
 
-        /* TO DO
-        *Fazer a implementacao do restante do main para a ordenacao 
-        *  com os algoritmos InsertionSort e SelectionSort
-        */
+    for (int i = 0; i < ordenadores.length; i++) {
+        // Ordena
+        ordenadores[i].ordenar(vetorOriginal);
+
+        // Exibe resultados
+        System.out.println("Método: " + nomes[i]);
+        System.out.println("Comparações: " + ordenadores[i].getComparacoes());
+        System.out.println("Movimentações: " + ordenadores[i].getMovimentacoes());
+        System.out.printf("Tempo: %.4f ms\n", ordenadores[i].getTempoOrdenacao());
+        System.out.println("-------------------------------------------------");
     }
+}
 }
