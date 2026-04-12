@@ -35,11 +35,12 @@ public class SelectionSort<T extends Comparable<T>> implements IOrdenador<T> {
                     menor = j;
                 }
             }
-            // Realiza a troca (swap)
-            T temp = dadosOrdenados[menor];
-            dadosOrdenados[menor] = dadosOrdenados[i];
-            dadosOrdenados[i] = temp;
-            movimentacoes += 3; // Contabilizando a troca
+            if (menor != i) {
+                T temp = dadosOrdenados[menor];
+                dadosOrdenados[menor] = dadosOrdenados[i];
+                dadosOrdenados[i] = temp;
+                movimentacoes += 3;
+            }
         }
         terminar();
         return dadosOrdenados;
