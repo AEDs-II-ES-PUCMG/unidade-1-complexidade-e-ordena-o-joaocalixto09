@@ -48,11 +48,14 @@ public class InsertionSort<T extends Comparable<T>> implements IOrdenador<T> {
         for (int i = 1; i < tamanho; i++) {
             T temp = dadosOrdenados[i];
             int j = i - 1;
+            this.comparacoes++;
             while (j >= 0 && dadosOrdenados[j].compareTo(temp) > 0) {
                 dadosOrdenados[j+1] = dadosOrdenados[j];
                 j--;
                 this.comparacoes++;
-                this.movimentacoes++;            
+                if (j >= 0) {
+                    this.movimentacoes++;
+                }            
             }
             dadosOrdenados[j+1] = temp;
         }	
