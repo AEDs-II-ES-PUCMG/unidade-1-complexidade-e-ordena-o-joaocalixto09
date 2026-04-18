@@ -1,8 +1,22 @@
 import java.util.Scanner;
 import java.util.Random;
+import java.util.Arrays;
 
 public class App {
+    static final int[] tamanhosTesteGrande = {31_250_000, 62_500_000, 125_000_000, 250_000_000, 500_000_000 };
+    static final int[] tamanhosTesteMedio = {     12_500,     25_000,      50_000,      100_000,    200_000 };
+    static final int[] tamanhosTestePequeno = {        3,          6,          12,           24,         48 };
+
     static Random aleatorio = new Random();
+
+    static int[] gerarVetor(int tamanho){
+        int[] vetor = new int[tamanho];
+        for (int i = 0; i < tamanho; i++){
+            vetor[i] = aleatorio.nextInt(1, tamanho/2);
+        }
+        return vetor;
+    }
+
 
     static Integer[] gerarVetorObjetos(int tamanho) {
         Integer[] vetor = new Integer[tamanho];
