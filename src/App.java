@@ -44,12 +44,12 @@ public class App {
 
     // Lista de ordenadores para facilitar o loop de teste
     IOrdenador<Integer>[] ordenadores = new IOrdenador[] {
-        new BubbleSort<Integer>(),
+        new Bubblesort<Integer>(),
         new InsertionSort<Integer>(),
         new SelectionSort<Integer>()
     };
 
-    String[] nomes = {"BubbleSort", "InsertionSort", "SelectionSort"};
+    String[] nomes = {"Bubblesort", "InsertionSort", "SelectionSort"};
 
     System.out.println("Comparação de Desempenho (Tamanho: " + tam + ")");
     System.out.println("-------------------------------------------------");

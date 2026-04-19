@@ -1,20 +1,21 @@
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class InsertionSort<T extends Comparable<T>> implements IOrdenador<T> {
-    private int comparacoes;
-    private int movimentacoes;
+    private long comparacoes;
+    private long movimentacoes;
     private double tempoOrdenacao;
     private double inicio;
 
     private double nanoToMilli = 1.0/1_000_000;
 
     @Override
-    public int getComparacoes() {
+    public long getComparacoes() {
         return comparacoes;
     }
 
     @Override
-    public int getMovimentacoes() {
+    public long getMovimentacoes() {
         return movimentacoes;
     }
 
@@ -42,6 +43,11 @@ public class InsertionSort<T extends Comparable<T>> implements IOrdenador<T> {
 
     @Override
     public T[] ordenar(T[] dados) {
+        return ordenar(dados, T::compareTo);
+    }
+
+    @Override
+    public T[] ordenar(T[] dados, Comparator<T> comparador) {
         T[] dadosOrdenados = Arrays.copyOf(dados, dados.length);
         int tamanho = dadosOrdenados.length;
         iniciar();
@@ -49,7 +55,7 @@ public class InsertionSort<T extends Comparable<T>> implements IOrdenador<T> {
             T temp = dadosOrdenados[i];
             int j = i - 1;
             this.comparacoes++;
-            while (j >= 0 && dadosOrdenados[j].compareTo(temp) > 0) {
+            while (j >= 0 && comparador.compare(dadosOrdenados[j], temp) > 0) {
                 dadosOrdenados[j+1] = dadosOrdenados[j];
                 j--;
                 this.comparacoes++;
