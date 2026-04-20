@@ -10,5 +10,9 @@ public class ComparadorCriterioA implements Comparator<Pedido> {
     @Override
     public int compare(Pedido o1, Pedido o2) {
         //Sua lógica de comparação aqui
+        if(o1.valorFinal() == (o2.valorFinal()) && o1.getTotalItens() == o2.getTotalItens() ){
+            return o1.getIdPedido() - o2.getIdPedido();
+        }
+        else()
     }
 }

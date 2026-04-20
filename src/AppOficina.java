@@ -243,7 +243,7 @@ public class AppOficina {
         
         int opcaoMetodo = exibirMenuOrdenadores();
         switch (opcaoMetodo) {
-            case 1 -> ordenador = new Bubblesort<>();
+            case 1 -> ordenador = new BubbleSort<>();
             case 2 -> ordenador = new InsertSort<>();
             case 3 -> ordenador = new SelectionSort<>();
             case 4 -> ordenador = new Mergesort<>();
